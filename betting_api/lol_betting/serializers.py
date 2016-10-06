@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from snippets.models import Team, Match
+from lol_betting.models import Team, Match
 from django.contrib.auth.models import User
 
 

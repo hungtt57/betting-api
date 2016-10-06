@@ -1,9 +1,8 @@
-from snippets.models import Snippet, Team, Match
+from lol_betting.models import Team, Match
 from django.contrib.auth.models import User
-from snippets.serializers import SnippetSerializer, UserSerializer, TeamSerializer, MatchSerializer
+from lol_betting.serializers import TeamSerializer, MatchSerializer
 from rest_framework import generics
 from rest_framework import permissions
-from snippets.permissions import IsOwnerOrReadOnly
 from rest_framework.reverse import reverse
 from rest_framework.decorators import api_view
 # Create your views here.
@@ -14,18 +13,6 @@ def api_root(request, format=None):
 	return Response({
 			'user': reverse('user-list', request=request, format=format),			
 		})
-
-
-class UserList(generics.ListCreateAPIView):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer
-	permission_class = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
-
-
-class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer
-	permission_class = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
 
 class TeamList(generics.ListCreateAPIView):
 	queryset = Team.objects.all()
