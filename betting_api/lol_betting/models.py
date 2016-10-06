@@ -46,9 +46,9 @@ class Match(models.Model):
 
 
 class Account(models.Model):
-	uid = models.IntegerField(unique=True, blank=False)
+	uid = models.CharField(max_length=100, unique=True, blank=False)
 	username = models.CharField(max_length=100, blank=True)
-	password = models.CharField(max_length=100, blank=False)
+	password = models.CharField(max_length=100, blank=True)
 	remember_token = models.CharField(max_length=1000, blank=False)
 	email = models.CharField(max_length=100, blank=False)
 	created_at = models.DateTimeField(auto_now_add=True)

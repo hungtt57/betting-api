@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^teams/(?P<pk>[0-9]+)/$', views.TeamDetail.as_view()),
     url(r'^matches/$', views.MatchList.as_view()),
     url(r'^matches/details/$', views.MatchDetail.as_view()),
+    url(r'^user/info/$', views.user_info),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

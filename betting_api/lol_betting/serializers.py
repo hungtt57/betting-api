@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from lol_betting.models import Team, Match
+from lol_betting.models import Team, Match, Account
 from django.contrib.auth.models import User
 
 
@@ -54,3 +54,20 @@ class MatchSerializer(serializers.ModelSerializer):
 		instance.round = validated_data.get('round', instance.round)
 		instance.save()
 		return instance
+
+
+class AccountInfoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Account
+
+	def create(self, validated_data):
+		return Account.objects.create(**validated_data)
+
+	def update(self, instance, validated_data):
+		instance.uid = validated_data.get('uid', instance.uid)
+		instance.username = validated_data.get('username', instance.username)
+		instance.password = validated_data.get('password', instance.password)
+		instance.remember_token = validated_data.get('remember_token', instance.remember_token)
+		instance.email = validated_data.get('email', instance.email)
+		instance.save()
+		return instance		

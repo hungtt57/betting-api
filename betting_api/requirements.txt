@@ -3,3 +3,4 @@ djangorestframework
 pygments
 MySQL-python
 Pillow
+requests
